@@ -49,11 +49,23 @@
     <script type="text/x-handlebars" data-template-name="products">
         <h1>Products</h1>
         {{#each}}
-        <div>
+        {{#link-to 'product' this tagName="div"}}
             <h3>{{title}}&nbsp;<small>${{price}}</small></h3>
             <img {{bind-attr src="image"}} alt="{{title}}" />
-        </div>
+        {{/link-to}}
         {{/each}}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="product">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>{{ title }}&nbsp;<small>${{price}}</small></h1>
+                <p>{{description}}</p>
+            </div>
+            <div class="col-md-5">
+                <img {{bind-attr src="image"}} alt="{{title}}" />
+            </div>
+        </div>
     </script>
 </body>
 </html>
