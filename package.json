@@ -1,0 +1,12 @@
+{
+  "name": "emberior",
+  "version": "0.0.1",
+  "description": "Ember app to follow up with ember.codeschool.com",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pavel Kovalyov <pavlo.kovalyov@gmail.com>",
+  "license": "ISC",
+  "dependencies": {}
+}

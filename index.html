@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.2/handlebars.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.11.3/ember.min.js"></script>
+    <script type="text/javascript"
+            src="http://builds.emberjs.com/release/ember.prod.js"></script>
+    <script type="text/javascript"
+            src="http://builds.emberjs.com/release/ember-template-compiler.js"></script>
+    <script type="text/javascript" src="./src/app.js"></script>
+</head>
+<body>
+    <script type="text/x-handlebars" data-template-name="application">
+        <div class='navbar navbar-default'>
+            <div class='container'>
+                {{#link-to "index" class="navbar-brand"}}<img src='img/logo.png' alt='logo' height='34' width='224'/>{{/link-to}}
+                <ul class='nav navbar-nav navbar-right'>
+                    {{#link-to "index" tagName="li"}}Home{{/link-to}}
+                    {{#link-to "about" tagName="li"}}About{{/link-to}}
+                </ul>
+            </div>
+        </div>
+        <div class='container'>
+            {{outlet}}
+        </div>
+        <footer class='container'>
+            <hr/>
+            <p class='pull-left'>&copy; 2013 The Flint &amp; Flame</p>
+
+            <p class='pull-right'><a href='#/credits'>Credits</a></p>
+        </footer>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="index">
+        <h1>Welcome to the Flint &amp; Flame!</h1>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="about">
+        <h1>About the Fire Spirits</h1>
+    </script>
+</body>
+</html>
