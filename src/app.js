@@ -19,9 +19,10 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.IndexController = Ember.ArrayController.extend({
-    productsCount: function() {
-        return this.get('length');
-    }.property('length')
+    productsCount: Ember.computed.alias('length'),
+    onSale: function() {
+        return this.filterBy('isOnSale').slice(0, 3);
+    }.property('@each.isOnSale')
 });
 
 App.ProductsRoute = Ember.Route.extend({
@@ -66,7 +67,7 @@ App.Product.FIXTURES = [
         title: 'NVidia Shield',
         price: 299.95,
         description: '',
-        isOnSale: false,
+        isOnSale: true,
         image: 'img/shield.jpg',
         reviews: [102, 103, 104]
     }

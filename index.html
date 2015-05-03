@@ -42,6 +42,18 @@
     <script type="text/x-handlebars" data-template-name="index">
         <h1>Welcome to the Flint &amp; Flame!</h1>
         {{#link-to 'products'}}View all {{productsCount}} products{{/link-to}}
+
+        {{#each onSale}}
+        <div class="col-sm-4">
+            <img {{bind-attr src="image" alt="title"}} class="col-sm-5"/>
+            <div class="col-sm-7">
+                <h2>{{title}}</h2>
+                <p class="product-description">{{description}}</p>
+                <p>{{#link-to 'product' this className="btn btn-success"}}
+                    Buy for ${{price}}{{/link-to}}</p>
+            </div>
+        </div>
+        {{/each}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="about">
