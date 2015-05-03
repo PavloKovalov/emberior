@@ -12,6 +12,18 @@ App.Router.map(function() {
     });
 });
 
+App.IndexRoute = Ember.Route.extend({
+    model: function() {
+        return this.store.findAll('product');
+    }
+});
+
+App.IndexController = Ember.ArrayController.extend({
+    productsCount: function() {
+        return this.get('length');
+    }.property('length')
+});
+
 App.ProductsRoute = Ember.Route.extend({
     model: function() {
         return this.store.findAll('product');
@@ -22,6 +34,10 @@ App.ProductRoute = Ember.Route.extend({
     model: function(params) {
         return this.store.find('product', params.product_id);
     }
+});
+
+App.ProductsController = Ember.ArrayController.extend({
+    sortProperties: ['price']
 });
 
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
