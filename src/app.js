@@ -1,4 +1,4 @@
-/* global Ember */
+/* global Ember, DS */
 'use strict';
 
 var App = Ember.Application.create({
@@ -7,35 +7,43 @@ var App = Ember.Application.create({
 
 App.Router.map(function() {
     this.route('about');
-    this.resource('products');
-    this.resource('product', {path: '/products/:title'});
+    this.resource('products', function() {
+        this.resource('product', {path: '/:product_id'});
+    });
 });
 
 App.ProductsRoute = Ember.Route.extend({
     model: function() {
-        return App.PRODUCTS;
+        return this.store.findAll('product');
     }
 });
 
 App.ProductRoute = Ember.Route.extend({
     model: function(params) {
-        var product = App.PRODUCTS.findBy(
-            'title',
-            params.title
-        );
-        console.log(product);
-        return product;
+        return this.store.find('product', params.product_id);
     }
 });
 
-App.PRODUCTS = [
+App.ApplicationAdapter = DS.FixtureAdapter.extend();
+
+App.Product = DS.Model.extend({
+    title: DS.attr('string'),
+    price: DS.attr('number'),
+    description: DS.attr('string'),
+    isOnSale: DS.attr('boolean'),
+    image: DS.attr('string')
+});
+
+App.Product.FIXTURES = [
     {
+        id: 1,
         title: 'Nexus 9',
         price: 399.95,
         description: '',
         isOnSale: false,
         image: 'img/nexus9.jpg'
     }, {
+        id: 2,
         title: 'NVidia Shield',
         price: 299.95,
         description: '',

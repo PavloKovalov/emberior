@@ -13,6 +13,7 @@
             src="./lib/ember.min.js"></script>
     <script type="text/javascript"
             src="./lib/ember-template-compiler.js"></script>
+    <script src="./lib/ember-data.prod.js"></script>
     <script type="text/javascript" src="./src/app.js"></script>
 </head>
 <body>
@@ -48,12 +49,16 @@
 
     <script type="text/x-handlebars" data-template-name="products">
         <h1>Products</h1>
+        <div class="col-sm-3">
         {{#each}}
         {{#link-to 'product' this tagName="div"}}
             <h3>{{title}}&nbsp;<small>${{price}}</small></h3>
-            <img {{bind-attr src="image"}} alt="{{title}}" />
         {{/link-to}}
         {{/each}}
+        </div>
+        <div class="col-sm-9">
+            {{outlet}}
+        </div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="product">
