@@ -31,7 +31,8 @@ App.Product = DS.Model.extend({
     price: DS.attr('number'),
     description: DS.attr('string'),
     isOnSale: DS.attr('boolean'),
-    image: DS.attr('string')
+    image: DS.attr('string'),
+    reviews: DS.hasMany('review', {async: true})
 });
 
 App.Product.FIXTURES = [
@@ -41,13 +42,49 @@ App.Product.FIXTURES = [
         price: 399.95,
         description: '',
         isOnSale: false,
-        image: 'img/nexus9.jpg'
-    }, {
+        image: 'img/nexus9.jpg',
+        reviews: [100, 101]
+    },
+    {
         id: 2,
         title: 'NVidia Shield',
         price: 299.95,
         description: '',
         isOnSale: false,
-        image: 'img/shield.jpg'
+        image: 'img/shield.jpg',
+        reviews: [102, 103, 104]
     }
+];
+
+App.Review = DS.Model.extend({
+    text: DS.attr('string'),
+    product: DS.belongsTo('product')
+});
+
+App.Review.FIXTURES = [
+    {
+        id: 100,
+        text: 'Awesome',
+        product: '1'
+    },
+    {
+        id: 101,
+        text: 'Great!',
+        product: '1'
+    },
+    {
+        id: 102,
+        text: 'Powerful!',
+        product: '2'
+    },
+    {
+        id: 103,
+        text: 'Ololo! Pshchhcshs!111',
+        product: '2'
+    },
+    {
+        id: 104,
+        text: 'Nice one!',
+        product: '2'
+    },
 ];

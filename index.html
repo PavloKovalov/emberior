@@ -70,6 +70,14 @@
             <div class="col-md-5">
                 <img {{bind-attr src="image"}} alt="{{title}}" />
             </div>
+            <h3>Reviews</h3>
+            <ul>
+                {{#each reviews}}
+                <li>{{text}}</li>
+                {{else}}
+                <li>No reviews yet. Be the first to write one.</li>
+                {{/each}}
+            </ul>
         </div>
     </script>
 </body>
